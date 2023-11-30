@@ -1,0 +1,25 @@
+name: Install ADC Tool
+
+on: [push, pull_request]
+
+jobs:
+  install-adc:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: '1.21.4' # Specify the version of Go you want to use
+
+    - name: Install ADC
+      run: |
+        go install github.com/api7/adc@latest
+        echo "export PATH=\$PATH:\$GOPATH/bin" >> $GITHUB_ENV
+
+    - name: Check ADC Installation
+      run: |
+        adc --version
