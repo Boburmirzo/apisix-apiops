@@ -8,9 +8,12 @@ Using the [standalone deployment](https://apisix.apache.org/docs/apisix/deployme
 
 You start with designing an [apisix.yml](https://github.com/Boburmirzo/apisix-standalone-deployment-mode/blob/main/apisix/apisix.yml) file (which includes **declarative configuration** for APISIX objects like *upstreams, plugins, and routes*). Use [APISIX Declarative CLI](https://github.com/api7/adc) (ADC) tool to capture APISIX configuration changes, and synchronize change back into a running instance. Then, you connect APISIX to continuous integration and continuous delivery of CI/CD tools such as GitHub actions in the same way you update and deliver code to enable APIOps.
 
+## How to test
 
+Change `apisix.yml` config, push the change to the branch and see if the changes
+reflected on the running APISIX instance after the GitHub workflow finishes.
 
-## How to run this demo?
+## How to run this demo locally?
 
 **Prerequisites**
 
