@@ -10,10 +10,6 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Run APISIX
-      run: |
-        docker compose -f docker-compose.yml up -d  
-
     - name: Set up Go
       uses: actions/setup-go@v2
       with:
@@ -27,6 +23,10 @@ jobs:
     - name: Check ADC Installation
       run: |
         adc version
+
+    - name: Run APISIX
+      run: |
+        docker compose -f docker-compose.yml up -d       
 
     - name: Check the connectivity with APISIX
       run: |
