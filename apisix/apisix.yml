@@ -1,19 +1,19 @@
-upstreams:
-  - name: "example upstream"
-    id: 1
-    type: roundrobin
-    nodes:
-      "backend:80": 1
+name: "Basic configuration"
+version: "1.0.0"
+services:
+  - name: httpbin-service
+    hosts:
+      - api7.ai
+    upstream:
+      name: httpbin
+      nodes:
+        - host: httpbin.org
+          port: 80
+          weight: 1
 routes:
-  - name: "example-route"
-    uri: /
-    method: GET
-    upstream_id: 1
-    plugins:
-      key-auth: {}
-consumers:
-  - username: exampleuser
-    plugins:
-      key-auth:
-        key: example-key
+  - name: httpbin-route
+    service_id: httpbin-service
+    uri: "/anything"
+    methods:
+      - GET
 #END
