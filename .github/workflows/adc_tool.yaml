@@ -22,7 +22,7 @@ jobs:
 
     - name: Check ADC Installation
       run: |
-        adc version
+        adc --version
 
     - name: Run APISIX
       run: |
