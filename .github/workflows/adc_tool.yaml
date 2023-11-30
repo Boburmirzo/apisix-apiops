@@ -38,8 +38,8 @@ jobs:
 
     - name: Validate APISIX Configuration Files
       run: |
-        adc validate -f apisix/apisix.yaml  
+        adc validate -f apisix/apisix.yml  
 
     - name: Syncing Configuration to APISIX Instance
       run: |
-        adc sync -f apisix/apisix.yaml      
+        adc sync -f apisix/apisix.yml      
