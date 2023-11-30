@@ -30,7 +30,7 @@ jobs:
 
     - name: Configuring ADC with APISIX Instance
       run: |
-        adc configure      
+        adc configure --address http://127.0.0.1:9180    
 
     - name: Check the connectivity with APISIX
       run: |
