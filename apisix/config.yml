@@ -1,4 +1,8 @@
 deployment:
-  role: data_plane
-  role_data_plane:
-    config_provider: yaml
+  etcd:
+    host:
+      - "http://etcd:2397"
+  admin:
+    admin_key_required: false
+    allow_admin:
+      - 0.0.0.0/0

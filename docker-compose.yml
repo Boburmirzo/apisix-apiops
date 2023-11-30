@@ -4,11 +4,17 @@ services:
     image: apache/apisix:latest
     volumes:
       - ./apisix/config.yml:/usr/local/apisix/conf/config.yaml:ro
-      - ./apisix/apisix.yml:/usr/local/apisix/conf/apisix.yaml:ro
     ports:
       - "9080:9080"
+      - "9180:9180"
+
+  etcd:
+    image: bitnami/etcd:3.5.9
     environment:
-      - GATEWAY_PORT=9080
+      ETCD_ENABLE_V2: "true"
+      ALLOW_NONE_AUTHENTICATION: "yes"
+      ETCD_ADVERTISE_CLIENT_URLS: "http://0.0.0.0:2397"
+      ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2397"    
   
   backend:
     image: nginx:1.19.0-alpine
